@@ -1,27 +1,28 @@
 import React, { useState } from 'react';
+import './Weather.css';
 import WeatherInfo from './WeatherInfo';
 import WeatherForecast from './WeatherForecast';
 import axios from 'axios';
-import './Weather.css';
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
   const [city, setCity] = useState(props.defaultCity);
+
   function handleResponse(response) {
     console.log(response.data);
     setWeatherData({
       ready: true,
-      temperature: response.data.temperature.current,
-      humidity: response.data.temperature.humidity,
+      city: response.data.city,
       date: new Date(response.data.time * 1000),
       description: response.data.condition.description,
       icon: response.data.condition.icon,
+      temperature: response.data.temperature.current,
+      humidity: response.data.temperature.humidity,
       wind: response.data.wind.speed,
-      city: response.data.city,
     });
   }
 
-  function search() {
+  function searchCity() {
     const apiKey = 'ce7c3ee7eo0a7079t0e5079cd0efcb43';
     let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
@@ -29,10 +30,10 @@ export default function Weather(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    search();
+    searchCity();
   }
 
-  function handleCityChange(event) {
+  function handleChange(event) {
     setCity(event.target.value);
   }
 
@@ -44,27 +45,28 @@ export default function Weather(props) {
             <div className="col-9">
               <input
                 type="search"
-                placeholder="Enter a city.."
+                placeholder="Enter a city..."
                 className="form-control"
                 autoFocus="on"
-                onChange={handleCityChange}
+                onChange={handleChange}
               />
             </div>
             <div className="col-3">
               <input
                 type="submit"
-                value="search"
+                value="Search"
                 className="btn btn-primary w-100"
               />
             </div>
           </div>
         </form>
         <WeatherInfo data={weatherData} />
-        <WeatherForecast />
+        <WeatherForecast data={weatherData} />
       </div>
     );
   } else {
-    search();
-    return 'The app is loading...';
+    searchCity();
+
+    return 'This app is loading. . .';
   }
 }
