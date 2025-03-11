@@ -2,12 +2,13 @@ import React from 'react';
 import FormattedDate from './FormattedDate';
 import WeatherIcon from './WeatherIcon';
 import WeatherTemperature from './WeatherTemperature';
+import "./WeatherInfo.css"
 
 export default function WeatherInfo(props) {
 
   return (
     <div className="WeatherInfo">
-      <h1>{props.data.city}</h1>
+      <h2>{props.data.city}</h2>
       <ul>
         <li>
           <FormattedDate date={props.data.date} />
@@ -28,8 +29,8 @@ export default function WeatherInfo(props) {
         </div>
         <div className="col-6">
           <ul>
-            <li>Humidity: {props.data.humidity}%</li>
-            <li>Wind: {props.data.wind} km/h</li>
+            <li className="humidity"><strong>Humidity:</strong> {props.data.humidity}%</li>
+            <li className="wind"><strong>Wind:</strong> {props.data.wind} km/h</li>
           </ul>
         </div>
       </div>

@@ -1,14 +1,28 @@
 .Weather {
-  border: 1px solid #dadde1;
-  color: #878787;
-  padding: 16px;
   border-radius: 4px;
 }
+.Weather section {
+  padding: 20px;
+}
 .Weather h1 {
-  font-size: 24px;
-  font-weight: 100;
-  margin: 20px 0 0 0;
-  line-height: 29px;
+  font-size: 35px;
+  padding: 10px 0 5px 0;
+}
+.btn {
+  background-color: #bae8e8;
+  color: black;
+  border: #bae8e8;
+}
+.btn:hover {
+  background-color: #8bd5d5;
+  color: black;
+}
+.form-control:focus {
+  border: 1px solid black;
+  box-shadow: none;
+}
+.Weather input[type='search']::-webkit-search-cancel-button {
+  filter: invert(50%); /* Adjust to change color */
 }
 .Weather ul {
   margin: 0;
@@ -42,3 +56,4 @@
   float: left;
   margin-right: 10px;
 }
+

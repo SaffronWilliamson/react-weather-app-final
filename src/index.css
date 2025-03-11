@@ -1,9 +1,4 @@
 body {
-  font-family: arial, sans-serif;
+  font-family: "Poppins", sans-serif;
 }
-a {
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
+
